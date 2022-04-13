@@ -1,3 +1,5 @@
+from funcsplit import *
+
 def ubah_game (kode_admin) :
     if check_admin(kode_admin):
         id_game = input ("Masukkan ID game: ")
@@ -9,10 +11,6 @@ def ubah_game (kode_admin) :
         ### kode untuk ubah data game (belum ada)
     else :
         print ("Anda bukan admin, tidak dapat mengubah data game.")
-
-
-def bold (kata) : 
-    return ('\033[1m' + '{}'.format(kata) + '\033[0m')      # bikin kata jadi bold
 
 def check_admin (lokasi_kode_admin) :  # check admin
     if lokasi_kode_admin == "admin" :
@@ -29,8 +27,12 @@ def check_user (lokasi_kode_user) :  # check user
 def ubah_stock (kode_admin) :
     if check_admin(kode_admin) :
         id_game = input ("Masukkan ID game: ")
-
-        if id_game in ["list dari data ID game"] :
+        data = CSVToList(file_path)
+        
+        list_id = [data[:][0]]
+        for data[i][0] in range (1,(data[i]))
+        
+        if id_game in [list_id] :
             stock_rubah = int (input ("Masukkan jumlah: "))
             
             ## lokasi judul game dari ID yang diminta
@@ -44,11 +46,11 @@ def ubah_stock (kode_admin) :
 
             elif stock_rubah < 0 :
                 stock_rubah = int (str (stock_rubah).pop('-'))           # ngilangin minusnya
-                print ("Stok game" + bold (judul_game) + "berhasil dikurangi. Stok sekarang: {}".format((stock_lama - stock_rubah)) )
+                print ("Stok game" + (judul_game) + "berhasil dikurangi. Stok sekarang: {}".format((stock_lama - stock_rubah)) )
                 ### kode untuk mengurangi stock game (belum ada)
 
             else :
-                print ("Stok game" + bold (judul_game) + "berhasil ditambah. Stok sekarang: {}".format((stock_lama + stock_rubah)) )
+                print ("Stok game" + (judul_game) + "berhasil ditambah. Stok sekarang: {}".format((stock_lama + stock_rubah)) )
                 ### kode untuk menambah stock game (belum ada)
 
         else : 
@@ -161,3 +163,8 @@ class color:    ## dummy ngga dipake, simpenan aja
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     END = '\033[0m'
+    
+
+
+def bold (kata) : 
+    return ('\033[1m' + '{}'.format(kata) + '\033[0m')      # bikin kata jadi bold
